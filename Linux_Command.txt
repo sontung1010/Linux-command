@@ -1,0 +1,124 @@
+Linux: 
+>sudo find /-name'name'  
+   ->  Useful for searching for folder or file name 
+
+>gedit ~/.bashrc
+-Grab the bashrc at home for aumatic command 
+
+>Find Ubuntu Version
+    lsb_release -a
+
+>Change Time and Date 
+      timedatectl list-timezones
+      timedatectl set-timezone America/Los_Angeles
+
+>Measure CPU Temp
+   sudo apt inistall libraspberrypi-bin
+      vcgencmd measure_temp
+      watch -n 2 vcgencmd measure_temp
+       (Constantly watch temp)
+
+>Restart Network manager 
+      sudo service network-manager restart
+
+    -Apply Internet
+      - put wifi on network_config.
+      -sudo netplan apply(Do this after log in)
+
+>Change the User name 
+     sudo passwd root
+ -After making a root accnt
+    exit
+  
+ -Login for root
+    ubuntu login: root
+    password: (Its the pass from the passwd root)
+ -Now do the following:
+    usermod -l <new_User> <old_User>  
+    usermod -d /home/<new_User> -m <new_User>
+    chfn -f <new_User> <new_User>
+    exit
+
+>Enable Network again
+    Just delete what was added on the 50-cloud-    init.yaml
+
+
+>Xubuntu debug stop xubuntu from freezing on idle
+       Delete xfce4-screensaver @ bin folder
+
+>Shorten the 1.5 mins wait when shutting down
+/etc/system.d/system.conf and edit the file to change DefaultTimeoutStartSec and DefaultTimeoutStopSec to "=10s"
+
+>Check how many USB is plugged in to the Rpi
+      -v4l2-ctl --list-devices
+
+>vcgencmd get_camera
+
+Intalling Raspi-Config(Xubuntu)
+$ wget https://archive.raspberrypi.org/debian/pool/main/r/raspi-config/raspi-config_20220106_all.deb -P /tmp
+$ sudo apt -y install libnewt0.52 whiptail parted triggerhappy lua5.1 alsa-utils
+$ sudo apt install -fy
+$ sudo dpkg -i /archive.raspberrypi.org/debian/pool/main/r/raspi-config/raspi-config_20220106_all.deb
+
+Intalling Raspi-Config(LXDE)
+$ wget https://archive.raspberrypi.org/debian/pool/main/r/raspi-config/raspi-config_20220506_all.deb -P /tmp
+
+$ sudo apt -y install libnewt0.52 whiptail parted triggerhappy lua5.1 alsa-utils
+
+$ sudo apt install -fy
+
+$ sudo dpkg -i /tmp/raspi-config_20220506_all.deb
+
+Raspi-Config for RealSenseD435(LXDE)
+wget https://archive.raspberrypi.org/debian/pool/main/r/raspi-config/raspi-config_20210922_all.deb -P /tmp
+
+sudo apt -y install libnewt0.52 whiptail parted triggerhappy lua5.1 alsa-utils
+
+sudo apt install -fy
+
+sudo dpkg -i /tmp/raspi-config_20210922_all.deb
+
+
+libtbb
+wget http://ports.ubuntu.com/pool/universe/t/tbb/libtbb-dev_2020.1-2_arm64.deb
+
+sudo dpkg -i ~/libtbb-dev_2020.1-2_arm64.deb
+
+sudo rm libtbb-dev_2020.1-2_arm64.deb
+
+Delete Repository File
+$ sudo nano /etc/apt/sources.list
+
+Connecting to hidden SSID wifi
+## WPA/WPA2 secured
+network={
+ ssid="JoesWiFi"
+ psk="12345"
+ scan_ssid=1
+}
+
+Downloading VStudio_rpi_arm64
+wget https://az764295.vo.msecnd.net/stable/784b0177c56c607789f9638da7b6bf3230d47a8c/code_1.71.0-1662017130_arm64.deb
+
+sudo apt install ./code_1.71.0-1662017130_arm64.deb
+
+Read, write and execute
+$chmod 764 
+
+Uninstall Package
+$apt remove
+$purge (Removes also the configuration of package)
+(This can be used to troubleshoot error package)
+
+>Install deskop core
+-after updating and upgrading from server
+$ sudo apt install ubuntu-desktop-minimal
+
+>Disable Warning: Remote host changed
+$ ssh-keygen -R <host>
+
+>Fix CMAKE
+$ sudo apt-get install -y build-essential
+
+>VNC View
+$ gsettings set org.gnome.Vino require-encryption false
